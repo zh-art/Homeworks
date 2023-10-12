@@ -1,21 +1,20 @@
-import {getGifs} from './getGifs';
-import {useState, useEffect} from 'react';
-import {GifItem} from './GifItem';
+import { getGifs } from './getGifs';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';  // import PropTypes
+import { GifItem } from './GifItem';
 
-// eslint-disable-next-line react/prop-types
 export const GifGrid = ({ category }) => {
 
     const [images, setImages] = useState([]);
 
-    const getImages = async () => {
-        const images = await getGifs (category)
-        setImages(images);
-    }
-
     useEffect(() => {
+        const getImages = async () => {
+            const imgs = await getGifs(category);
+            setImages(imgs);
+        };
+
         getImages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [category]); 
 
     return (
         <>
@@ -31,3 +30,7 @@ export const GifGrid = ({ category }) => {
         </>
     );
 }
+
+GifGrid.propTypes = {
+    category: PropTypes.string.isRequired 
+};

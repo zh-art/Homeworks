@@ -1,8 +1,8 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';  
 
 const tittle = "DS3";
 
-// eslint-disable-next-line react/prop-types
 const FirstApp = ({ value }) => {
   const [counter, setCounter] = useState(value);
 
@@ -37,6 +37,10 @@ const FirstApp = ({ value }) => {
       </div>
     </>
   );
+};
+
+FirstApp.propTypes = {
+  value: PropTypes.number
 };
 
 export default FirstApp;
