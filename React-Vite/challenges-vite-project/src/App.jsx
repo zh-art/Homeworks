@@ -28,6 +28,7 @@ function App() {
           onChange={handleInputChange}
           placeholder="Enter category"
         />
+        
         <button onClick={handleAddCategory}>Add Category</button>
 
         <ul>

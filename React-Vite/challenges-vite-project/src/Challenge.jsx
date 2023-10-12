@@ -15,6 +15,7 @@ export const Challenge = () => {
 
   return (
     <>
+      <hr />
       <h1>Challenge</h1>
       <input
         type="text"
@@ -27,6 +28,7 @@ export const Challenge = () => {
           return <li key={key}>{category}</li>;
         })}
       </ul>
+      <hr />
     </>
   );
 };

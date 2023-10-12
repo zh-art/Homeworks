@@ -11,15 +11,16 @@ export const Father = () => {
 
     return (
         <div>
+            <hr />
             <h1>Father</h1>
             <p>Total: {valor}</p>
-            <hr />
 
             {
                 list.map((n, idx) => {
                     return <Son key={idx} numero={n} increment={increment} />
                 })
             }
+            <hr />
         </div>
     )
 }
