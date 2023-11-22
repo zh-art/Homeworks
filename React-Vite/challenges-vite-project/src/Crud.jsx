@@ -4,7 +4,7 @@ import { useCollection } from './firebase/firestore';
 
 export const Crud = () => {
   const [user, setUser] = useState({ name: '' });
-  const { add, getAll, isPending, results } = useCollection("users");
+  const { add, getAll, isPending, results, update, remove } = useCollection("users");
 
   const getAllDocs = async () => {
     await getAll([]);
@@ -18,6 +18,17 @@ export const Crud = () => {
   const handleSetUser = (event) => {
     setUser({ name: event.target.value });
   }
+
+  const updateDoc = async (id, updatedUser) => {
+    await update(id, updatedUser);
+    await getAllDocs(); 
+  }
+  
+  const deleteDoc = async (id) => {
+    await remove(id);
+    await getAllDocs(); 
+  }
+  
 
   useEffect(() => {
     getAllDocs();
@@ -33,6 +44,16 @@ export const Crud = () => {
           return <li key={item.id}>{ JSON.stringify(item) }</li>
         })}
       </ul>
+      <ul>
+  {results.map(item => (
+    <li key={item.id}>
+      {JSON.stringify(item)}
+      <button onClick={() => updateDoc(item.id, { ...item, name: 'Nuevo Nombre' })}>Actualizar</button>
+      <button onClick={() => deleteDoc(item.id)}>Eliminar</button>
+    </li>
+  ))}
+</ul>
+
     </>
   )
 }

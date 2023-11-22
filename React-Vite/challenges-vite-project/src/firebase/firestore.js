@@ -1,8 +1,8 @@
 import { db } from './config';
-import { collection, addDoc, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import { useState } from 'react';
 
-const useCollection = (table) => {
+export const useCollection = (table) => {
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);

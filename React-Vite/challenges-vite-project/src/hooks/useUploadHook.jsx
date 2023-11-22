@@ -29,13 +29,14 @@ export const useUploadHook = () => {
     );
   };
 
+  const handleGetAll = async () => {
+    const { items } = await getAll();
+    items.forEach(async (itemRef) => {
+      const url = await getDownloadURL(itemRef);
+      setFiles(list => [...list, url]);
+    });
+  };
+  
+
   return { files, percent, handleChange, handleUpload, handleGetAll }
 }
-
-const handleGetAll = async () => {
-  const { items } = await getAll();
-  items.forEach(async (itemRef) => {
-    const url = await getDownloadURL(itemRef);
-    setFiles(list => [...list, url]);
-  });
-};
