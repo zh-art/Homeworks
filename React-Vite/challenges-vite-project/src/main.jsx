@@ -6,6 +6,8 @@ import FirstApp from "./firstApp.jsx";
 import { Challenge } from "./Challenge.jsx";
 import { ComponentApp } from "./ComponentApp.jsx";
 import { Father } from "./Father.jsx";
+import { store } from "./store/store.js";
+import { Provider } from "react-redux";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function MainApp() {
@@ -15,11 +17,13 @@ function MainApp() {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Provider store={store}>
     <MainApp />
     <App tittle="Im Juan Bohorquez - Daaz" />
     <ComponentApp />
     <Father />
     <FirstApp value={0} />
     <Challenge />
+    </Provider>
   </React.StrictMode>
 );
